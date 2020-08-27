@@ -5,16 +5,20 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-  	<meta property="og:title" content=" NOTHING" />
+  	<meta property="og:title" content=" Golang 获取 IP 寄存器内容 &middot;  NOTHING" />
   	<meta property="og:site_name" content="NOTHING" />
-  	<meta property="og:url" content="https://soyum2222.github.io/" />
+  	<meta property="og:url" content="https://soyum2222.github.io/getip/" />
     
     
-    <meta property="og:type" content="website" />
+  	<meta property="og:type" content="article" />
+
+    <meta property="og:article:published_time" content="2020-08-27T23:04:25&#43;08:00" />
+
+    
     
 
   <title>
-     NOTHING
+     Golang 获取 IP 寄存器内容 &middot;  NOTHING
   </title>
 
     <meta name="description" content="hi the world" />
@@ -31,13 +35,13 @@
 
     
       
+          <link href="https://soyum2222.github.io/index.xml" rel="alternate" type="application/rss+xml" title="NOTHING" />
       
-        <link href="/index.xml" rel="alternate" type="application/rss+xml" title="NOTHING" />
       
     
     <meta name="generator" content="Hugo 0.74.3" />
 
-    <link rel="canonical" href="https://soyum2222.github.io/" />
+    <link rel="canonical" href="https://soyum2222.github.io/getip/" />
 
      
 </head>
@@ -52,9 +56,6 @@
 
 <header class="main-header " style="background-image: url(https://soyum2222.github.io/images/user.jpg)">
 
-
-    
-
     <nav class="main-nav overlay clearfix">
         
             <a class="blog-logo" href="https://soyum2222.github.io/"><img src="https://soyum2222.github.io/images/user.png" alt="Blog Logo" /></a>
@@ -64,7 +65,7 @@
 <div class="vertical">
         <div class="main-header-content inner">
             <h1 class="page-title">
-              <a class="btn-bootstrap-2 title-scroll" href="#content">NOTHING</a>
+              <a class="btn-bootstrap-2" href="#content">NOTHING</a>
           </h1>
           <h2 class="page-description">hi the world</h2>
         </div>
@@ -72,33 +73,21 @@
     <a class="scroll-down icon-arrow-left" href="#content"><span class="hidden">Scroll Down</span></a>
 </header>
 
-<main id="content" class="content" role="main">
-    
-    
-    
-    
-    
-    
+  <main id="content" class="content" role="main">
 
-    <div class="extra-pagination inner">
-        <nav class="pagination" role="navigation">
-	
-	<span class="page-number">Page 1 of 1</span>
-	
-</nav>
 
-    </div>
+  <article class="post ">
 
-    
-        
-<article class="post ">
     <header class="post-header">
-        <h2 class="post-title"><a href="/getip/">Golang 获取 IP 寄存器内容</a></h2>
+        <h1 class="post-title">Golang 获取 IP 寄存器内容</h1>
+        <section class="post-meta">
+        
+         
+        </section>
     </header>
-    <section class="post-excerpt">
-      <p>
-          <section class="post-content">
-            <p>之前用C写过一个调度器，想用Go也写一次，正好最近在学习Plan9汇编，趁机巩固一下。</p>
+
+    <section class="post-content">
+      <p>之前用C写过一个调度器，想用Go也写一次，正好最近在学习Plan9汇编，趁机巩固一下。</p>
 <p>先理清楚基本思路。因为不能直接对IP寄存器做操作，所以无法直接通过 MOVQ IP，AX 这种方式得到IP的值。</p>
 <p>但是总所周知，CALL 指令等价于 PUSH IP ，jmp XXX 。所以我们可以通过CALL指令过通过SP寄存器拿到IP的值。</p>
 <p>基本思路很简单</p>
@@ -170,99 +159,53 @@ Go中如果是手写汇编方法，这一部分是需要在TEXT .getip(SB),$0-0 
   RET
 </code></pre><p>FP伪寄存器是指向IP的位置前8位的，也就是返回值和参数的地址的末尾。这里 推荐 <a href="https://xargin.com/plan9-assembly/">https://xargin.com/plan9-assembly/</a> 曹大的文章</p>
 
-          </section>
-      </p>
-      
     </section>
-    <footer class="post-meta">
-        
-            <img class="author-thumb" src="https://soyum2222.github.io/images/user.png" alt="Author image" nopin="nopin" />
-        
-        
-            soyum
-        
-        
-        <time class="post-date" datetime="2020-08-27T23:04:25&#43;08:00">
-            27 Aug 2020
-        </time>
-    </footer>
-</article>
+
+
+  <footer class="post-footer">
+
 
     
-        
-<article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/post/test/">sample</a></h2>
-    </header>
-    <section class="post-excerpt">
-      <p>
-          <section class="post-content">
-            <p><a href="https://gohugo.io/documentation/">Hugo</a> is the world&rsquo;s fastest static website engine. It&rsquo;s written in Go (aka Golang) and developed by bep, <code>spf13</code> and friends.</p>
-<blockquote>
-<p>Below you will find some of the most common and helpful pages from our documentation.</p>
-</blockquote>
-<p><a href="https://gohugo.io/documentation/">https://gohugo.io/documentation/</a></p>
+    <figure class="author-image">
 
-          </section>
-      </p>
-      
-    </section>
-    <footer class="post-meta">
-        
-            <img class="author-thumb" src="https://soyum2222.github.io/images/user.png" alt="Author image" nopin="nopin" />
-        
-        
-        
-            
-        
-        
-        <time class="post-date" datetime="2017-01-01T00:00:00Z">
-            1 Jan 2017
-        </time>
-    </footer>
-</article>
-
-    
-        
-<article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/post/test/">test post</a></h2>
-    </header>
-    <section class="post-excerpt">
-      <p>
-          <section class="post-content">
-            <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">echo <span style="color:#e6db74">&#34;hello world !!&#34;</span>
-</code></pre></div>
-          </section>
-      </p>
-      
-    </section>
-    <footer class="post-meta">
-        
-            <img class="author-thumb" src="https://soyum2222.github.io/images/user.png" alt="Author image" nopin="nopin" />
-        
-        
-        
-            
-        
-        
-        <time class="post-date" datetime="2016-01-01T00:00:00Z">
-            1 Jan 2016
-        </time>
-    </footer>
-</article>
-
+        <a class="img" href="https://soyum2222.github.io/" style="background-image: url(https://soyum2222.github.io/images/user.png)"><span class="hidden">soyum</span></a>
+    </figure>
     
 
-    <nav class="pagination" role="navigation">
-	
-	<span class="page-number">Page 1 of 1</span>
-	
-</nav>
+    <section class="author">
 
+  <p>soyum</p>
+  
+
+</section>
+
+
+    
+    <section class="share">
+      <h4>Share this page</h4>
+      <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Golang%20%e8%8e%b7%e5%8f%96%20IP%20%e5%af%84%e5%ad%98%e5%99%a8%e5%86%85%e5%ae%b9&amp;url=https%3a%2f%2fsoyum2222.github.io%2fgetip%2f"
+          onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+          <span class="hidden">Twitter</span>
+      </a>
+      <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsoyum2222.github.io%2fgetip%2f"
+          onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+          <span class="hidden">Facebook</span>
+      </a>
+      <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fsoyum2222.github.io%2fgetip%2f"
+         onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+          <span class="hidden">Google+</span>
+      </a>
+    </section>
+    
+
+    
+    
+    
+
+  </footer>
+</article>
 
 </main>
-
     <footer class="site-footer clearfix">
         <section class="copyright"><a href="">NOTHING</a> </section>
         
