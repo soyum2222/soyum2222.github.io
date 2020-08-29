@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="zh-CN">
 
 <style>
     .menu {
@@ -61,51 +61,48 @@
 
 
 <div class="row">
-
-  
-  <div class="col m4 s12">
-    <div class="card-panel">
-      <h4><a href="https://soyum2222.github.io/panic/">panic and recover 源码阅读</a></h4>
-      <p>
-       
-      </p>
-      <p>事情起因是因为上班无聊水群（此处领导不可见），发现群里有小伙伴提了个关于 recover 捕获 panic 的问题
+    
+    
+    <div class="col m4 s12">
+        <div class="card-panel">
+            <h4><a href="https://soyum2222.github.io/panic/">panic and recover 源码阅读</a></h4>
+            <p>
+                
+            </p>
+            <p>事情起因是因为上班无聊水群（此处领导不可见），发现群里有小伙伴提了个关于 recover 捕获 panic 的问题
 代码1:
 func main() { defer recover_func() panic(&quot;panic&quot;) } func recover_func() { func() { err := recover() if err != nil { fmt.Println(&quot;recover&quot;) fmt.Println(err) } }() } //out put: panic: panic 代码2
-func main() { defer recover_func() panic(&quot;panic&quot;) } func recover_func() { err := recover() if err != nil { fmt.Println(&quot;recover&quot;) fmt.Println(err) } } //out put: recover // panic 由上代码可见，代码1无法成功recover捕获panic，而代码2能正常捕获。
-这成功触及到了我的知识盲区。于是决定探索一下panic和recover的奥秘。
-首先我们需要找到panic在go中的源码。
-TEXT	&quot;&quot;.main(SB), ABIInternal, $24-0 MOVQ	(TLS), CX CMPQ	SP, 16(CX) JLS	59 SUBQ	$24, SP MOVQ	BP, 16(SP) LEAQ	16(SP), BP FUNCDATA	$0, gclocals·33cdeccccebe80329f1fdbee7f5874cb(SB) FUNCDATA	$1, gclocals·33cdeccccebe80329f1fdbee7f5874cb(SB) FUNCDATA	$3, gclocals·9fb7f0986f647f17cb53dda1484e0f7a(SB) PCDATA	$2, $1 PCDATA	$0, $0 LEAQ	type.</p>
-      <p>
-      29 Aug 2020
-       
-      </p>
+func main() { defer recover_func() panic(&quot;panic&quot;) } func recover_func() { err := recover() if err !</p>
+            <p>
+                29 Aug 2020
+                
+            </p>
+        </div>
     </div>
-  </div>
-
-  
-  <div class="col m4 s12">
-    <div class="card-panel">
-      <h4><a href="https://soyum2222.github.io/defer/">defer 源码阅读 （go 1.13）</a></h4>
-      <p>
-       
-      </p>
-      <p>直接上代码  package main import &quot;fmt&quot; func main() { defer func() { fmt.Println(&quot;defer&quot;) }() } 反编译  &quot;&quot;.main STEXT size=113 args=0x0 locals=0x48 0x0000 00000 (defer.go:5)	TEXT	&quot;&quot;.main(SB), ABIInternal, $72-0 0x0000 00000 (defer.go:5)	MOVQ	TLS, CX 0x0009 00009 (defer.go:5)	MOVQ	(CX)(TLS*2), CX 0x0010 00016 (defer.go:5)	CMPQ	SP, 16(CX) 0x0014 00020 (defer.go:5)	JLS	106 0x0016 00022 (defer.go:5)	SUBQ	$72, SP 0x001a 00026 (defer.go:5)	MOVQ	BP, 64(SP) 0x001f 00031 (defer.go:5)	LEAQ	64(SP), BP 0x0024 00036 (defer.</p>
-      <p>
-      29 Aug 2020
-       
-      </p>
+    
+    
+    <div class="col m4 s12">
+        <div class="card-panel">
+            <h4><a href="https://soyum2222.github.io/defer/">defer 源码阅读 （go 1.13）</a></h4>
+            <p>
+                
+            </p>
+            <p>直接上代码  package main import &quot;fmt&quot; func main() { defer func() { fmt.Println(&quot;defer&quot;) }() } 反编译  &quot;&quot;.main STEXT size=113 args=0x0 locals=0x48 0x0000 00000 (defer.go:5)	TEXT	&quot;&quot;.main(SB), ABIInternal, $72-0 0x0000 00000 (defer.go:5)	MOVQ	TLS, CX 0x0009 00009 (defer.go:5)	MOVQ	(CX)(TLS*2), CX 0x0010 00016 (defer.go:5)	CMPQ	SP, 16(CX) 0x0014 00020 (defer.</p>
+            <p>
+                29 Aug 2020
+                
+            </p>
+        </div>
     </div>
-  </div>
-
-  
-  <div class="col m4 s12">
-    <div class="card-panel">
-      <h4><a href="https://soyum2222.github.io/getip/">Golang 获取 IP 寄存器内容</a></h4>
-      <p>
-       
-      </p>
-      <p>之前用C写过一个调度器，想用Go也写一次，正好最近在学习Plan9汇编，趁机巩固一下。
+    
+    
+    <div class="col m4 s12">
+        <div class="card-panel">
+            <h4><a href="https://soyum2222.github.io/getip/">Golang 获取 IP 寄存器内容</a></h4>
+            <p>
+                
+            </p>
+            <p>之前用C写过一个调度器，想用Go也写一次，正好最近在学习Plan9汇编，趁机巩固一下。
 先理清楚基本思路。因为不能直接对IP寄存器做操作，所以无法直接通过 MOVQ IP，AX 这种方式得到IP的值。
 但是总所周知，CALL 指令等价于 PUSH IP ，jmp XXX 。所以我们可以通过CALL指令过通过SP寄存器拿到IP的值。
 基本思路很简单
@@ -116,14 +113,14 @@ TEXT ·getip(SB),$0 MOVQ (SP) ,AX MOVQ AX,ret+0(FP) RET C版本要比GO版本SP�
 为啥呢? 我照着C版本SP偏移8字节取拿IP，结果就是debug了一个下午。
 反编译两个版本看一下
 C
-getrip: .LFB0: .cfi_startproc pushq %rbp .cfi_def_cfa_offset 16 .cfi_offset 6, -16 movq %rsp, %rbp .cfi_def_cfa_register 6 pushq %rbx .cfi_offset 3, -24 #APP # 9 &quot;main.</p>
-      <p>
-      27 Aug 2020
-       
-      </p>
+getrip: .LFB0: .</p>
+            <p>
+                27 Aug 2020
+                
+            </p>
+        </div>
     </div>
-  </div>
-
+    
 </div>
 
   

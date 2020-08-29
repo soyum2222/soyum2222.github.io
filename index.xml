@@ -5,7 +5,7 @@
     <link>https://soyum2222.github.io/</link>
     <description>Recent content on NOTHING</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>zh-CN</language>
     <copyright>© 2015 Copyright Text</copyright>
     
 	<atom:link href="https://soyum2222.github.io/index.xml" rel="self" type="application/rss+xml" />
@@ -20,10 +20,7 @@
       <description>事情起因是因为上班无聊水群（此处领导不可见），发现群里有小伙伴提了个关于 recover 捕获 panic 的问题
 代码1:
 func main() { defer recover_func() panic(&amp;quot;panic&amp;quot;) } func recover_func() { func() { err := recover() if err != nil { fmt.Println(&amp;quot;recover&amp;quot;) fmt.Println(err) } }() } //out put: panic: panic 代码2
-func main() { defer recover_func() panic(&amp;quot;panic&amp;quot;) } func recover_func() { err := recover() if err != nil { fmt.Println(&amp;quot;recover&amp;quot;) fmt.Println(err) } } //out put: recover // panic 由上代码可见，代码1无法成功recover捕获panic，而代码2能正常捕获。
-这成功触及到了我的知识盲区。于是决定探索一下panic和recover的奥秘。
-首先我们需要找到panic在go中的源码。
-TEXT	&amp;quot;&amp;quot;.main(SB), ABIInternal, $24-0 MOVQ	(TLS), CX CMPQ	SP, 16(CX) JLS	59 SUBQ	$24, SP MOVQ	BP, 16(SP) LEAQ	16(SP), BP FUNCDATA	$0, gclocals·33cdeccccebe80329f1fdbee7f5874cb(SB) FUNCDATA	$1, gclocals·33cdeccccebe80329f1fdbee7f5874cb(SB) FUNCDATA	$3, gclocals·9fb7f0986f647f17cb53dda1484e0f7a(SB) PCDATA	$2, $1 PCDATA	$0, $0 LEAQ	type.</description>
+func main() { defer recover_func() panic(&amp;quot;panic&amp;quot;) } func recover_func() { err := recover() if err !</description>
     </item>
     
     <item>
@@ -32,7 +29,7 @@ TEXT	&amp;quot;&amp;quot;.main(SB), ABIInternal, $24-0 MOVQ	(TLS), CX CMPQ	SP, 1
       <pubDate>Sat, 29 Aug 2020 00:41:00 +0800</pubDate>
       
       <guid>https://soyum2222.github.io/defer/</guid>
-      <description>直接上代码  package main import &amp;quot;fmt&amp;quot; func main() { defer func() { fmt.Println(&amp;quot;defer&amp;quot;) }() } 反编译  &amp;quot;&amp;quot;.main STEXT size=113 args=0x0 locals=0x48 0x0000 00000 (defer.go:5)	TEXT	&amp;quot;&amp;quot;.main(SB), ABIInternal, $72-0 0x0000 00000 (defer.go:5)	MOVQ	TLS, CX 0x0009 00009 (defer.go:5)	MOVQ	(CX)(TLS*2), CX 0x0010 00016 (defer.go:5)	CMPQ	SP, 16(CX) 0x0014 00020 (defer.go:5)	JLS	106 0x0016 00022 (defer.go:5)	SUBQ	$72, SP 0x001a 00026 (defer.go:5)	MOVQ	BP, 64(SP) 0x001f 00031 (defer.go:5)	LEAQ	64(SP), BP 0x0024 00036 (defer.</description>
+      <description>直接上代码  package main import &amp;quot;fmt&amp;quot; func main() { defer func() { fmt.Println(&amp;quot;defer&amp;quot;) }() } 反编译  &amp;quot;&amp;quot;.main STEXT size=113 args=0x0 locals=0x48 0x0000 00000 (defer.go:5)	TEXT	&amp;quot;&amp;quot;.main(SB), ABIInternal, $72-0 0x0000 00000 (defer.go:5)	MOVQ	TLS, CX 0x0009 00009 (defer.go:5)	MOVQ	(CX)(TLS*2), CX 0x0010 00016 (defer.go:5)	CMPQ	SP, 16(CX) 0x0014 00020 (defer.</description>
     </item>
     
     <item>
@@ -52,7 +49,7 @@ TEXT ·getip(SB),$0 MOVQ (SP) ,AX MOVQ AX,ret+0(FP) RET C版本要比GO版本SP�
 为啥呢? 我照着C版本SP偏移8字节取拿IP，结果就是debug了一个下午。
 反编译两个版本看一下
 C
-getrip: .LFB0: .cfi_startproc pushq %rbp .cfi_def_cfa_offset 16 .cfi_offset 6, -16 movq %rsp, %rbp .cfi_def_cfa_register 6 pushq %rbx .cfi_offset 3, -24 #APP # 9 &amp;quot;main.</description>
+getrip: .LFB0: .</description>
     </item>
     
   </channel>
