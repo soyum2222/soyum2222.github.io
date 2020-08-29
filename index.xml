@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>NOTHING</title>
-    <link>http://soyum2222.github.io/</link>
+    <link>https://soyum2222.github.io/</link>
     <description>Recent content on NOTHING</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© 2015 Copyright Text</copyright>
     
-	<atom:link href="http://soyum2222.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://soyum2222.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>defer 源码阅读 （go 1.13）</title>
-      <link>http://soyum2222.github.io/defer/</link>
+      <link>https://soyum2222.github.io/defer/</link>
       <pubDate>Sat, 29 Aug 2020 00:41:00 +0800</pubDate>
       
-      <guid>http://soyum2222.github.io/defer/</guid>
+      <guid>https://soyum2222.github.io/defer/</guid>
       <description>直接上代码  package main import &amp;quot;fmt&amp;quot; func main() { defer func() { fmt.Println(&amp;quot;defer&amp;quot;) }() } 反编译  &amp;quot;&amp;quot;.main STEXT size=113 args=0x0 locals=0x48 0x0000 00000 (defer.go:5)	TEXT	&amp;quot;&amp;quot;.main(SB), ABIInternal, $72-0 0x0000 00000 (defer.go:5)	MOVQ	TLS, CX 0x0009 00009 (defer.go:5)	MOVQ	(CX)(TLS*2), CX 0x0010 00016 (defer.go:5)	CMPQ	SP, 16(CX) 0x0014 00020 (defer.go:5)	JLS	106 0x0016 00022 (defer.go:5)	SUBQ	$72, SP 0x001a 00026 (defer.go:5)	MOVQ	BP, 64(SP) 0x001f 00031 (defer.go:5)	LEAQ	64(SP), BP 0x0024 00036 (defer.</description>
     </item>
     
     <item>
       <title>Golang 获取 IP 寄存器内容</title>
-      <link>http://soyum2222.github.io/getip/</link>
+      <link>https://soyum2222.github.io/getip/</link>
       <pubDate>Thu, 27 Aug 2020 23:04:25 +0800</pubDate>
       
-      <guid>http://soyum2222.github.io/getip/</guid>
+      <guid>https://soyum2222.github.io/getip/</guid>
       <description>之前用C写过一个调度器，想用Go也写一次，正好最近在学习Plan9汇编，趁机巩固一下。
 先理清楚基本思路。因为不能直接对IP寄存器做操作，所以无法直接通过 MOVQ IP，AX 这种方式得到IP的值。
 但是总所周知，CALL 指令等价于 PUSH IP ，jmp XXX 。所以我们可以通过CALL指令过通过SP寄存器拿到IP的值。
