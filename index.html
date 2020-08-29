@@ -13,20 +13,20 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
   <title>NOTHING</title>
-  <link href="https://soyum2222.github.io//css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="https://soyum2222.github.io//css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="https://soyum2222.github.io/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="https://soyum2222.github.io/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/default.min.css">
   <style type="text/css">
   
-    footer.page-footer{background-image: url(https://soyum2222.github.io//images/default.png);}
+    footer.page-footer{background-image: url(https://soyum2222.github.io/images/default.png);}
   
   </style>
 </head>
 <body>
   <ul id="slide-out" class="side-nav">
-    <li><a href="https://soyum2222.github.io/"><i class="mdi-action-home left"></i>Home<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
-    <li><a href="https://soyum2222.github.io//categories"><i class="mdi-action-perm-media left"></i>Categories<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
-    <li><a href="https://soyum2222.github.io//tags"><i class="mdi-action-loyalty left"></i>Tags<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
+    <li><a href="https://soyum2222.github.io"><i class="mdi-action-home left"></i>Home<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
+    <li><a href="https://soyum2222.github.io/categories"><i class="mdi-action-perm-media left"></i>Categories<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
+    <li><a href="https://soyum2222.github.io/tags"><i class="mdi-action-loyalty left"></i>Tags<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
   </ul>
   <div id="index-banner" class="parallax-container">
     <div class="section no-pad-bot">
@@ -50,7 +50,7 @@
     </div>
     <div class="parallax">
         
-        <img src="https://soyum2222.github.io//images/default.png">
+        <img src="https://soyum2222.github.io/images/default.png">
         
     </div>
 </div>
@@ -61,6 +61,27 @@
 
 
 <div class="row">
+
+  
+  <div class="col m4 s12">
+    <div class="card-panel">
+      <h4><a href="https://soyum2222.github.io/panic/">panic and recover 源码阅读</a></h4>
+      <p>
+       
+      </p>
+      <p>事情起因是因为上班无聊水群（此处领导不可见），发现群里有小伙伴提了个关于 recover 捕获 panic 的问题
+代码1:
+func main() { defer recover_func() panic(&quot;panic&quot;) } func recover_func() { func() { err := recover() if err != nil { fmt.Println(&quot;recover&quot;) fmt.Println(err) } }() } //out put: panic: panic 代码2
+func main() { defer recover_func() panic(&quot;panic&quot;) } func recover_func() { err := recover() if err != nil { fmt.Println(&quot;recover&quot;) fmt.Println(err) } } //out put: recover // panic 由上代码可见，代码1无法成功recover捕获panic，而代码2能正常捕获。
+这成功触及到了我的知识盲区。于是决定探索一下panic和recover的奥秘。
+首先我们需要找到panic在go中的源码。
+TEXT	&quot;&quot;.main(SB), ABIInternal, $24-0 MOVQ	(TLS), CX CMPQ	SP, 16(CX) JLS	59 SUBQ	$24, SP MOVQ	BP, 16(SP) LEAQ	16(SP), BP FUNCDATA	$0, gclocals·33cdeccccebe80329f1fdbee7f5874cb(SB) FUNCDATA	$1, gclocals·33cdeccccebe80329f1fdbee7f5874cb(SB) FUNCDATA	$3, gclocals·9fb7f0986f647f17cb53dda1484e0f7a(SB) PCDATA	$2, $1 PCDATA	$0, $0 LEAQ	type.</p>
+      <p>
+      29 Aug 2020
+       
+      </p>
+    </div>
+  </div>
 
   
   <div class="col m4 s12">
@@ -133,8 +154,8 @@ getrip: .LFB0: .cfi_startproc pushq %rbp .cfi_def_cfa_offset 16 .cfi_offset 6, -
     </div>
   </footer>
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-  <script src="https://soyum2222.github.io//js/materialize.min.js"></script>
-  <script src="https://soyum2222.github.io//js/init.js"></script>
+  <script src="https://soyum2222.github.io/js/materialize.min.js"></script>
+  <script src="https://soyum2222.github.io/js/init.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
   

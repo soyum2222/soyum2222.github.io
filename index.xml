@@ -12,6 +12,21 @@
     
     
     <item>
+      <title>panic and recover 源码阅读</title>
+      <link>https://soyum2222.github.io/panic/</link>
+      <pubDate>Sat, 29 Aug 2020 13:35:42 +0800</pubDate>
+      
+      <guid>https://soyum2222.github.io/panic/</guid>
+      <description>事情起因是因为上班无聊水群（此处领导不可见），发现群里有小伙伴提了个关于 recover 捕获 panic 的问题
+代码1:
+func main() { defer recover_func() panic(&amp;quot;panic&amp;quot;) } func recover_func() { func() { err := recover() if err != nil { fmt.Println(&amp;quot;recover&amp;quot;) fmt.Println(err) } }() } //out put: panic: panic 代码2
+func main() { defer recover_func() panic(&amp;quot;panic&amp;quot;) } func recover_func() { err := recover() if err != nil { fmt.Println(&amp;quot;recover&amp;quot;) fmt.Println(err) } } //out put: recover // panic 由上代码可见，代码1无法成功recover捕获panic，而代码2能正常捕获。
+这成功触及到了我的知识盲区。于是决定探索一下panic和recover的奥秘。
+首先我们需要找到panic在go中的源码。
+TEXT	&amp;quot;&amp;quot;.main(SB), ABIInternal, $24-0 MOVQ	(TLS), CX CMPQ	SP, 16(CX) JLS	59 SUBQ	$24, SP MOVQ	BP, 16(SP) LEAQ	16(SP), BP FUNCDATA	$0, gclocals·33cdeccccebe80329f1fdbee7f5874cb(SB) FUNCDATA	$1, gclocals·33cdeccccebe80329f1fdbee7f5874cb(SB) FUNCDATA	$3, gclocals·9fb7f0986f647f17cb53dda1484e0f7a(SB) PCDATA	$2, $1 PCDATA	$0, $0 LEAQ	type.</description>
+    </item>
+    
+    <item>
       <title>defer 源码阅读 （go 1.13）</title>
       <link>https://soyum2222.github.io/defer/</link>
       <pubDate>Sat, 29 Aug 2020 00:41:00 +0800</pubDate>
