@@ -65,6 +65,30 @@
     
     <div class="col m4 s12">
         <div class="card-panel">
+            <h4><a href="https://soyum2222.github.io/monkey/">go 中的 Monkey Patching</a></h4>
+            <p>
+                
+            </p>
+            <p>翻译自 https://bou.ke/blog/monkey-patching-in-go/
+很多人认为 monkey Patching 只能在动态语言中，像 Ruby 和 Python,但是并不是这样,计算器是一种愚蠢的机器, 我们始终能让他做我们所想的事情！让我们看下Go函数是如何工作的，以及如何在运行时修改它。这篇文章会使用大量的 intel 汇编， 所以我假设你已经掌握，或者在阅读时会参考查阅相关资料。
+如果你它如何工作的不感兴趣，并且你只想使用monkey 补丁 ，那么你可以找到这个库
+让我看下反汇编后会是什么样子。
+package main func a() int { return 1 } func main() { print(a()) } 通过Hopper编译后，我们看到上诉代码生成了这样的汇编。
+我将参考上面图片的左边展示的各种指令的地址。
+我们的代码从main.main 开始，指令0x2010 到 0x2026 设置了栈。你可以通过这里获得更多关于此的信息。此文中，我将忽视这段代码。
+0x202a处是在调用函数 main.a ，0x2000处 只是简单的把0x1移动到栈上 然后返回，0x202f到0x2037 则是将该值传递给函数runtime.printint。
+非常简单！现在让我看下一个函数的值在go中是如何实现的。
+函数值在GO中的机制 package main import ( &quot;fmt&quot; &quot;unsafe&quot; ) func a() int { return 1 } func main() { f := a fmt.</p>
+            <p>
+                5 Sep 2020
+                
+            </p>
+        </div>
+    </div>
+    
+    
+    <div class="col m4 s12">
+        <div class="card-panel">
             <h4><a href="https://soyum2222.github.io/panic/">panic and recover 源码阅读</a></h4>
             <p>
                 
@@ -95,6 +119,9 @@ func main() { defer recover_func() panic(&quot;panic&quot;) } func recover_func(
         </div>
     </div>
     
+    
+</div>
+<div class="row">
     
     <div class="col m4 s12">
         <div class="card-panel">
